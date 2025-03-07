@@ -54,7 +54,7 @@ https://documenter.getpostman.com/view/28756060/2sAYdoE6pv
 Necesitamos primeramente instalar nuestras dependencias o librerias:
 
 ```bash
-  npm run install
+  npm install
 ```
 
 Y para inicializar nuestro front haremos uso del siguiente comando:
