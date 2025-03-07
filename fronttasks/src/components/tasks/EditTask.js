@@ -64,12 +64,14 @@ const EditTask = ({token}) => {
             </div>
             <div className='mb-3'>
                 <label className='form-label'>Status</label>
-                <input
+                <select
                     value={status}
-                    onChange={ (e) => setStatus(e.target.value)}
-                    type='text'
+                    onChange={(e) => setStatus(e.target.value)}
                     className='form-control'
-                />
+                >
+                    <option value='pending'>Pending</option>
+                    <option value='completed'>Completed</option>
+                </select>
             </div>
             <button type='submit' className='btn btn-primary'>Update</button>
         </form>

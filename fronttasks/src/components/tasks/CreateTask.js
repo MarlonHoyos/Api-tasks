@@ -9,7 +9,7 @@ const endponint = 'http://localhost:8000/api/tasks'
 const CreateTask = ({token}) => {
     const [description, setDescription] = useState('')
     const [title, setTitle] = useState('')
-    const [status, setStatus] = useState('')
+    const [status, setStatus] = useState('pending')
     const [error, setError] = useState('')
 
 
@@ -52,12 +52,14 @@ const CreateTask = ({token}) => {
             </div>
             <div className='mb-3'>
                 <label className='form-label'>Status</label>
-                <input
+                <select
                     value={status}
-                    onChange={ (e) => setStatus(e.target.value)}
-                    type='text'
+                    onChange={(e) => setStatus(e.target.value)}
                     className='form-control'
-                />
+                >
+                    <option value='pending'>Pending</option>
+                    <option value='completed'>Completed</option>
+                </select>
             </div>
             <button type='submit' className='btn btn-primary'>Save</button>
         </form>
