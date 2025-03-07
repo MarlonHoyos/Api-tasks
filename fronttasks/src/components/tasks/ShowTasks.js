@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 
-import {Link} from 'react-router-dom'
+import {Link, useNavigate } from 'react-router-dom'
 import { deleteTask, getTasks } from '../../services/taskService'
 
 const endpoint = 'http://localhost:8000/api'
-const ShowTasks = ({token}) => {
+const ShowTasks = ({token, onChange} ) => {
+
+    const navigate = useNavigate()
 
     const [tasks, setTasks] = useState([]);
 
@@ -24,8 +26,17 @@ const ShowTasks = ({token}) => {
         getAllTasks()
     }
 
+    const logOut = () => {
+        localStorage.removeItem('token');
+        onChange()
+        navigate('/')
+    }
+
   return (
     <div>
+        <div className='d-flex justify-content-end mb-2'>
+            <button onClick={logOut} className='btn btn-primary'>Logout</button>
+        </div>
         <div className='d-grid gap-2'>
             <Link to="/create" className='btn btn-success btn-lg mt-2 mb-2 text-white'>Create</Link>
         </div>

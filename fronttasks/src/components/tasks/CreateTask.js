@@ -20,7 +20,7 @@ const CreateTask = ({token}) => {
         try {
             e.preventDefault()
             await createTask( {description: description, title, title, status, status}, token)
-            navigate('/') 
+            navigate('/tasks') 
         } catch (error) {
             setError(error.message)
         }

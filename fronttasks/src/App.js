@@ -29,13 +29,17 @@ function App() {
       throw new Error('Login failed');
     }
   };
-  
+
+  const onChange = () => {
+    setToken(null)
+  }
+
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path='/' element={ !token  ? <LoginComponent onLogin={handleLogin}/> : <Navigate to='/tasks'/> }/>
-          <Route path="/tasks" element={token ? <ShowTasks token={token} /> : <Navigate to="/" />} />
+          <Route path="/tasks" element={token ? <ShowTasks token={token} onChange={ onChange } /> : <Navigate to="/" />} />
           <Route path='/create' element={ token ? <CreateTask token={token}/> : <Navigate to='/' />}/>
           <Route path='/edit/:id' element={ token ? <EditTask token={token}/> : <Navigate to='/' /> }/>
 

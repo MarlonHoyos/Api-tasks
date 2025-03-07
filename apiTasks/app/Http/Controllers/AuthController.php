@@ -30,6 +30,9 @@ class AuthController extends Controller
 
             return ResponseApi::response_success('user successfully logged in', ['token' => $token]);
         } catch (\Exception $e) {
+            if ($e instanceof ValidationException) {
+                return ResponseApi::response_error('Validation failed',$e->errors(), 422);
+            }
             return ResponseApi::response_error('Failed to login user', $e->getMessage());
         }
     }

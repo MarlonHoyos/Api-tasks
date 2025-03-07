@@ -42,7 +42,6 @@ export const deleteTask = async (id, token) => {
 
 export const createTask = async (task, token) => {
   try {
-    console.log("token", token); 
     const response = await axios.post('http://localhost:8000/api/tasks', task, {
       headers: {
         'Authorization': `Bearer ${token}`, 

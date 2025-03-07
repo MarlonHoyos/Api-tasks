@@ -22,7 +22,7 @@ const EditTask = ({token}) => {
                 description: description,
                 status:status
             }, token)
-            navigate('/') 
+            navigate('/tasks') 
         } catch (error) {
             setError(error.message)
         }
